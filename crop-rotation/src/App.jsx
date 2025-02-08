@@ -38,7 +38,6 @@ const App = () => {
 
     return (
         <div className="app-container">
-            <h1 className="app-title">Garden Manager</h1>
             <div className="tabs-container">
                 {tabs.map(tab => (
                     <button

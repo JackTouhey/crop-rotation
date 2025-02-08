@@ -1,10 +1,15 @@
+/* CurrentBedsTab.css */
 .current-beds-container {
+    width: 100%;
+    height: 100%;
     padding: 20px;
+    background-color: white;
 }
 
 .current-beds-title {
-    color: #2c3e50;
+    color: black;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .beds-grid {
@@ -14,24 +19,25 @@
 }
 
 .bed-card {
-    background-color: white;
+    background-color: #f0f8ff;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .bed-name {
-    color: #2c3e50;
+    color: black;
     margin-bottom: 10px;
 }
 
 .bed-info {
     margin-bottom: 15px;
+    color: black;
 }
 
 .archive-button {
-    background-color: #e74c3c;
-    color: white;
+    background-color: #add8e6;
+    color: black;
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
@@ -40,7 +46,7 @@
 }
 
     .archive-button:hover {
-        background-color: #c0392b;
+        background-color: #87ceeb;
     }
 
 .modal-overlay {
@@ -68,9 +74,11 @@
     height: 100px;
     margin: 10px 0;
     padding: 8px;
-    border: 1px solid #bdc3c7;
+    border: 1px solid #add8e6;
     border-radius: 4px;
     resize: vertical;
+    background-color: white;
+    color: black;
 }
 
 .modal-buttons {
@@ -89,19 +97,19 @@
 }
 
 .submit-button {
-    background-color: #27ae60;
-    color: white;
+    background-color: #add8e6;
+    color: black;
 }
 
     .submit-button:hover {
-        background-color: #219a52;
+        background-color: #87ceeb;
     }
 
 .cancel-button {
-    background-color: #95a5a6;
-    color: white;
+    background-color: #f0f8ff;
+    color: black;
 }
 
     .cancel-button:hover {
-        background-color: #7f8c8d;
+        background-color: #e6f3ff;
     }
