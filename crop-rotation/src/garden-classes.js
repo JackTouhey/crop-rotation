@@ -1,8 +1,7 @@
 // Base classes representing core entities
 class Crop {
-    constructor(name, datePlanted, icon = '') {
+    constructor(name, icon = '') {
         this.name = name;
-        this.datePlanted = datePlanted;
         this.icon = icon;
         this.recipes = new Set();
     }
@@ -38,6 +37,7 @@ class CropBed {
         this.crops = new Set();
         this.success = 0; // 0-100 rating
         this.weatherDescription = '';
+        this.datePlanted = null;
     }
 
     addCrop(crop) {
@@ -54,6 +54,10 @@ class CropBed {
 
     setWeatherDescription(description) {
         this.weatherDescription = description;
+    }
+
+    setDatePlanted(date) {
+        this.datePlanted = date;
     }
 }
 
@@ -82,6 +86,9 @@ class ActiveCropBeds {
     }
 
     addBed(bed) {
+        if (!bed.datePlanted) {
+            bed.setDatePlanted(new Date());
+        }
         this.currentBeds.add(bed);
     }
 
@@ -100,6 +107,9 @@ class BedHistory {
     }
 
     addBed(bed) {
+        if (!bed.datePlanted) {
+            bed.setDatePlanted(new Date());
+        }
         this.priorBeds.push(bed);
     }
 
@@ -118,6 +128,18 @@ class GardenManager {
         this.plannedBeds = new PlannedCropBeds();
         this.activeBeds = new ActiveCropBeds();
         this.bedHistory = new BedHistory();
+        this.crops = new Set();
+
+        // Prepopulate with default crops
+        const defaultCrops = [
+            'Beans', 'Eggplant', 'Chilli', 'Capsicum', 'Tomatoes',
+            'Zuchini', 'Pumpkin', 'Cucumber', 'Corn', 'Potatoes',
+            'Carrot', 'Beetroot'
+        ];
+
+        defaultCrops.forEach(cropName => {
+            this.addCrop(new Crop(cropName));
+        });
     }
 
     // Bed management methods
@@ -128,6 +150,7 @@ class GardenManager {
     }
 
     activateBed(bed) {
+        bed.setDatePlanted(new Date());
         this.plannedBeds.removeBed(bed);
         this.activeBeds.addBed(bed);
     }
@@ -148,6 +171,14 @@ class GardenManager {
 
     getHistoricalBeds(year) {
         return this.bedHistory.getBedsByYear(year);
+    }
+
+    addCrop(crop) {
+        this.crops.add(crop);
+    }
+
+    getAllCrops() {
+        return Array.from(this.crops);
     }
 }
 

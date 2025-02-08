@@ -1,14 +1,19 @@
+// components/NewCropTab.jsx
 import React, { useState } from 'react';
+import { Crop } from '../garden-classes';
 import './NewCropTab.css';
 
 const NewCropTab = ({ gardenManager }) => {
     const [cropName, setCropName] = useState('');
     const [message, setMessage] = useState('');
+    const [crops, setCrops] = useState(gardenManager.getAllCrops());
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (cropName.trim()) {
-            const crop = new Crop(cropName.trim(), new Date());
+            const newCrop = new Crop(cropName.trim(), new Date());
+            gardenManager.addCrop(newCrop);
+            setCrops(gardenManager.getAllCrops());
             setMessage(`Crop "${cropName}" created successfully!`);
             setCropName('');
             setTimeout(() => setMessage(''), 3000);
@@ -35,6 +40,17 @@ const NewCropTab = ({ gardenManager }) => {
                 </button>
             </form>
             {message && <div className="success-message">{message}</div>}
+
+            <div className="existing-crops">
+                <h3>Existing Crops</h3>
+                <div className="crops-list">
+                    {crops.map((crop, index) => (
+                        <div key={index} className="crop-item">
+                            {crop.name}
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };

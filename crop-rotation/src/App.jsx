@@ -13,8 +13,8 @@ const App = () => {
 
     const tabs = [
         { id: 'newCrop', label: 'New Crop' },
-        { id: 'current', label: 'Current Beds' },
         { id: 'newBed', label: 'New Bed' },
+        { id: 'current', label: 'Current Beds' },
         { id: 'historical', label: 'Historical Beds' },
         { id: 'planned', label: 'Planned Beds' }
     ];

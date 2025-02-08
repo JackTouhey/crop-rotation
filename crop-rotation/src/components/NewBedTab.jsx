@@ -5,21 +5,20 @@ import './NewBedTab.css';
 
 const NewBedTab = ({ gardenManager }) => {
     const [bedName, setBedName] = useState('');
-    const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+    const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
     const [selectedCrops, setSelectedCrops] = useState(new Set());
     const [bedType, setBedType] = useState('planned');
     const [weatherDescription, setWeatherDescription] = useState('');
     const [message, setMessage] = useState('');
 
-    const years = Array.from(
-        { length: 10 },
-        (_, i) => new Date().getFullYear() - 3 + i
-    );
-
     const handleSubmit = (e) => {
         e.preventDefault();
         if (bedName.trim()) {
-            const newBed = new CropBed(bedName.trim(), selectedYear);
+            const plantingDate = new Date(selectedDate);
+            const year = plantingDate.getFullYear();
+
+            const newBed = new CropBed(bedName.trim(), year);
+            newBed.setDatePlanted(plantingDate);
             selectedCrops.forEach(crop => newBed.addCrop(crop));
 
             if (weatherDescription) {
@@ -73,17 +72,14 @@ const NewBedTab = ({ gardenManager }) => {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="bedYear">Year:</label>
-                    <select
-                        id="bedYear"
-                        value={selectedYear}
-                        onChange={(e) => setSelectedYear(parseInt(e.target.value))}
-                        className="year-select"
-                    >
-                        {years.map(year => (
-                            <option key={year} value={year}>{year}</option>
-                        ))}
-                    </select>
+                    <label htmlFor="plantingDate">Planting Date:</label>
+                    <input
+                        type="date"
+                        id="plantingDate"
+                        value={selectedDate}
+                        onChange={(e) => setSelectedDate(e.target.value)}
+                        className="date-input"
+                    />
                 </div>
 
                 <div className="form-group">
@@ -116,6 +112,22 @@ const NewBedTab = ({ gardenManager }) => {
                             />
                             Historical
                         </label>
+                    </div>
+                </div>
+
+                <div className="form-group">
+                    <label>Select Crops:</label>
+                    <div className="crops-selection">
+                        {gardenManager.getAllCrops().map((crop, index) => (
+                            <button
+                                key={index}
+                                type="button"
+                                className={`crop-button ${selectedCrops.has(crop) ? 'selected' : ''}`}
+                                onClick={() => toggleCrop(crop)}
+                            >
+                                {crop.name}
+                            </button>
+                        ))}
                     </div>
                 </div>
 

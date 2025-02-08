@@ -1,43 +1,78 @@
+/* NewBedTab.css */
 .new-bed-container {
-    max-width: 600px;
-    margin: 0 auto;
+    width: 100%;
+    height: 100%;
     padding: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .new-bed-title {
-    color: #2c3e50;
-    margin-bottom: 20px;
+    color: black;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    text-align: center;
 }
 
 .new-bed-form {
+    width: 100%;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
+    align-items: center;
 }
 
 .form-group {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #add8e6;
+    align-items: center;
 }
 
+    .form-group:last-of-type {
+        border-bottom: none;
+    }
+
+    .form-group label {
+        font-size: 1.1rem;
+        color: black;
+        font-weight: 500;
+    }
+
 .bed-input,
-.year-select,
+.date-input,
 .weather-input {
-    padding: 10px;
-    border: 1px solid #bdc3c7;
+    width: 80%;
+    padding: 12px;
+    border: 2px solid #add8e6;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 1rem;
+    background-color: white;
+    color: black;
+}
+
+.date-input {
+    cursor: pointer;
+    font-family: Arial, sans-serif;
 }
 
 .weather-input {
     height: 100px;
     resize: vertical;
+    font-family: Arial, sans-serif;
 }
 
 .bed-type-options {
     display: flex;
-    gap: 20px;
+    gap: 30px;
+    justify-content: center;
+    margin: 10px 0;
 }
 
 .radio-label {
@@ -45,28 +80,78 @@
     align-items: center;
     gap: 8px;
     cursor: pointer;
+    font-size: 1rem;
+    color: black;
 }
 
+    .radio-label input[type="radio"] {
+        cursor: pointer;
+        width: 16px;
+        height: 16px;
+    }
+
+.crops-selection {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    justify-items: center;
+}
+
+.crop-button {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: white;
+    border: 2px solid #add8e6;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: black;
+    font-size: 1rem;
+    text-align: center;
+}
+
+    .crop-button:hover {
+        background-color: #e6f3ff;
+        transform: translateY(-2px);
+    }
+
+    .crop-button.selected {
+        background-color: #add8e6;
+        border-color: #87ceeb;
+        font-weight: 500;
+    }
+
 .submit-button {
+    width: 200px;
     padding: 12px 24px;
-    background-color: #27ae60;
-    color: white;
+    background-color: #add8e6;
+    color: black;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    margin-top: 20px;
 }
 
     .submit-button:hover {
-        background-color: #219a52;
+        background-color: #87ceeb;
+        transform: translateY(-2px);
     }
 
 .success-message {
     margin-top: 20px;
-    padding: 10px;
-    background-color: #d4edda;
-    color: #155724;
+    padding: 15px;
+    background-color: #f0f8ff;
+    color: black;
     border-radius: 4px;
     text-align: center;
+    font-size: 1rem;
+    width: 80%;
+    border: 1px solid #add8e6;
 }
