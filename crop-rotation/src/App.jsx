@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { GardenManager } from './garden-classes';
+import NewCropTab from './components/NewCropTab';
+import CurrentBedsTab from './components/CurrentBedsTab';
+import NewBedTab from './components/NewBedTab';
+import HistoricalBedsTab from './components/HistoricalBedsTab';
+import PlannedBedsTab from './components/PlannedBedsTab';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+    const [activeTab, setActiveTab] = useState('current');
+    const [gardenManager] = useState(() => new GardenManager());
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    const tabs = [
+        { id: 'newCrop', label: 'New Crop' },
+        { id: 'current', label: 'Current Beds' },
+        { id: 'newBed', label: 'New Bed' },
+        { id: 'historical', label: 'Historical Beds' },
+        { id: 'planned', label: 'Planned Beds' }
+    ];
 
-export default App
+    const renderTabContent = () => {
+        switch (activeTab) {
+            case 'newCrop':
+                return <NewCropTab gardenManager={gardenManager} />;
+            case 'current':
+                return <CurrentBedsTab gardenManager={gardenManager} />;
+            case 'newBed':
+                return <NewBedTab gardenManager={gardenManager} />;
+            case 'historical':
+                return <HistoricalBedsTab gardenManager={gardenManager} />;
+            case 'planned':
+                return <PlannedBedsTab gardenManager={gardenManager} />;
+            default:
+                return null;
+        }
+    };
+
+    return (
+        <div className="app-container">
+            <h1 className="app-title">Garden Manager</h1>
+            <div className="tabs-container">
+                {tabs.map(tab => (
+                    <button
+                        key={tab.id}
+                        className={`tab-button ${activeTab === tab.id ? 'active' : ''}`}
+                        onClick={() => setActiveTab(tab.id)}
+                    >
+                        {tab.label}
+                    </button>
+                ))}
+            </div>
+            <div className="tab-content">
+                {renderTabContent()}
+            </div>
+        </div>
+    );
+};
+
+export default App;

@@ -1,0 +1,78 @@
+.historical-beds-container {
+    padding: 20px;
+}
+
+.historical-beds-title {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.historical-beds-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.historical-bed-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bed-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.bed-name {
+    color: #2c3e50;
+    margin: 0;
+}
+
+.bed-year {
+    background-color: #3498db;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.bed-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+    .bed-details h4 {
+        color: #7f8c8d;
+        margin: 0 0 5px 0;
+        font-size: 0.9em;
+    }
+
+    .bed-details p {
+        margin: 0;
+        color: #2c3e50;
+    }
+
+.bed-crops,
+.bed-weather,
+.bed-success {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.no-beds-message {
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}

@@ -1,0 +1,107 @@
+.current-beds-container {
+    padding: 20px;
+}
+
+.current-beds-title {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.beds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.bed-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bed-name {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.bed-info {
+    margin-bottom: 15px;
+}
+
+.archive-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .archive-button:hover {
+        background-color: #c0392b;
+    }
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.weather-input {
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.submit-button,
+.cancel-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button {
+    background-color: #27ae60;
+    color: white;
+}
+
+    .submit-button:hover {
+        background-color: #219a52;
+    }
+
+.cancel-button {
+    background-color: #95a5a6;
+    color: white;
+}
+
+    .cancel-button:hover {
+        background-color: #7f8c8d;
+    }
