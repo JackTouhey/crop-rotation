@@ -1,12 +1,15 @@
-import React from 'react';
+import {useReducer} from 'react';
 import './PlannedBedsTab.css';
 
 const PlannedBedsTab = ({ gardenManager }) => {
     const plannedBeds = gardenManager.getAllPlannedBeds()
         .sort((a, b) => a.year - b.year || a.name.localeCompare(b.name));
 
+    const [, forceUpdate] = useReducer(x => x + 1, 0);
+
     const handleActivateBed = (bed) => {
         gardenManager.activateBed(bed);
+        forceUpdate();
     };
 
     return (
