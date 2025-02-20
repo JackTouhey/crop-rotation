@@ -14,7 +14,6 @@ const NewBedTab = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        gardenManager.load();
         if (bedName.trim()) {
             const plantingDate = new Date(selectedDate);
             const year = plantingDate.getFullYear();
@@ -27,6 +26,7 @@ const NewBedTab = () => {
                 newBed.setWeatherDescription(weatherDescription);
             }
 
+            // Use the wrapped methods that trigger updates
             switch (bedType) {
                 case 'planned':
                     gardenManager.plannedBeds.addBed(newBed);

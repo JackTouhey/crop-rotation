@@ -9,7 +9,6 @@ const NewCropTab = () => {
     const [message, setMessage] = useState('');
     const [crops, setCrops] = useState([]);
 
-    // Update crops list when gardenManager changes
     useEffect(() => {
         setCrops(gardenManager.getAllCrops());
     }, [gardenManager]);
@@ -17,9 +16,8 @@ const NewCropTab = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (cropName.trim()) {
-            const newCrop = new Crop(cropName.trim(), new Date());
+            const newCrop = new Crop(cropName.trim());
             gardenManager.addCrop(newCrop);
-            setCrops(gardenManager.getAllCrops());
             setMessage(`Crop "${cropName}" created successfully!`);
             setCropName('');
             setTimeout(() => setMessage(''), 3000);

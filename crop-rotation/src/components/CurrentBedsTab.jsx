@@ -8,7 +8,6 @@ const CurrentBedsTab = () => {
     const [weatherDescription, setWeatherDescription] = useState('');
     const [activeBeds, setActiveBeds] = useState([]);
 
-    // Update activeBeds whenever gardenManager changes
     useEffect(() => {
         setActiveBeds(gardenManager.getAllActiveBeds());
     }, [gardenManager]);
@@ -17,7 +16,6 @@ const CurrentBedsTab = () => {
         if (weatherDescription.trim()) {
             bed.setWeatherDescription(weatherDescription.trim());
             gardenManager.archiveBed(bed);
-            setActiveBeds(gardenManager.getAllActiveBeds());
             setSelectedBed(null);
             setWeatherDescription('');
         }
