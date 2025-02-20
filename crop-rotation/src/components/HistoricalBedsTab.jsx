@@ -1,9 +1,16 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+import { useGardenManager } from '../hooks/useGardenManager';
 import './HistoricalBedsTab.css';
 
-const HistoricalBedsTab = ({ gardenManager }) => {
-    const historicalBeds = gardenManager.bedHistory.getAllBeds()
-        .sort((a, b) => b.year - a.year || b.name.localeCompare(a.name));
+const HistoricalBedsTab = () => {
+    const gardenManager = useGardenManager();
+    const [historicalBeds, setHistoricalBeds] = useState([]);
+
+    useEffect(() => {
+        const beds = gardenManager.bedHistory.getAllBeds()
+            .sort((a, b) => b.year - a.year || b.name.localeCompare(a.name));
+        setHistoricalBeds(beds);
+    }, [gardenManager]);
 
     return (
         <div className="historical-beds-container">

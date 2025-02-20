@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useGardenManager } from '../hooks/useGardenManager';
 import './CurrentBedsTab.css';
 
-const CurrentBedsTab = ({ gardenManager }) => {
+const CurrentBedsTab = () => {
+    const gardenManager = useGardenManager();
     const [selectedBed, setSelectedBed] = useState(null);
     const [weatherDescription, setWeatherDescription] = useState('');
-    const [activeBeds, setActiveBeds] = useState(gardenManager.getAllActiveBeds());
+    const [activeBeds, setActiveBeds] = useState([]);
+
+    // Update activeBeds whenever gardenManager changes
+    useEffect(() => {
+        setActiveBeds(gardenManager.getAllActiveBeds());
+    }, [gardenManager]);
 
     const handleMoveToHistory = (bed) => {
         if (weatherDescription.trim()) {
@@ -36,7 +43,6 @@ const CurrentBedsTab = ({ gardenManager }) => {
                     </div>
                 ))}
             </div>
-
             {selectedBed && (
                 <div className="modal-overlay">
                     <div className="modal-content">

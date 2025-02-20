@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { GardenManager } from './garden-classes';
+import { useState } from 'react';
+import { GardenManager } from './classes/garden-classes';
 import NewCropTab from './components/NewCropTab';
 import CurrentBedsTab from './components/CurrentBedsTab';
 import NewBedTab from './components/NewBedTab';

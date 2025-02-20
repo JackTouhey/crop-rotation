@@ -1,12 +1,18 @@
-// components/NewCropTab.jsx
-import React, { useState } from 'react';
-import { Crop } from '../garden-classes';
+import { useState, useEffect } from 'react';
+import { Crop } from '../classes/garden-classes';
+import { useGardenManager } from '../hooks/useGardenManager';
 import './NewCropTab.css';
 
-const NewCropTab = ({ gardenManager }) => {
+const NewCropTab = () => {
+    const gardenManager = useGardenManager();
     const [cropName, setCropName] = useState('');
     const [message, setMessage] = useState('');
-    const [crops, setCrops] = useState(gardenManager.getAllCrops());
+    const [crops, setCrops] = useState([]);
+
+    // Update crops list when gardenManager changes
+    useEffect(() => {
+        setCrops(gardenManager.getAllCrops());
+    }, [gardenManager]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -40,7 +46,6 @@ const NewCropTab = ({ gardenManager }) => {
                 </button>
             </form>
             {message && <div className="success-message">{message}</div>}
-
             <div className="existing-crops">
                 <h3>Existing Crops</h3>
                 <div className="crops-list">

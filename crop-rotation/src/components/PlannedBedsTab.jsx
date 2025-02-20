@@ -1,15 +1,22 @@
-import {useReducer} from 'react';
+import { useState, useEffect } from 'react';
+import { useGardenManager } from '../hooks/useGardenManager';
 import './PlannedBedsTab.css';
 
-const PlannedBedsTab = ({ gardenManager }) => {
-    const plannedBeds = gardenManager.getAllPlannedBeds()
-        .sort((a, b) => a.year - b.year || a.name.localeCompare(b.name));
+const PlannedBedsTab = () => {
+    const gardenManager = useGardenManager();
+    const [plannedBeds, setPlannedBeds] = useState([]);
 
-    const [, forceUpdate] = useReducer(x => x + 1, 0);
+    // Update planned beds whenever gardenManager changes
+    useEffect(() => {
+        const beds = gardenManager.getAllPlannedBeds()
+            .sort((a, b) => a.year - b.year || a.name.localeCompare(b.name));
+        setPlannedBeds(beds);
+    }, [gardenManager]);
 
     const handleActivateBed = (bed) => {
         gardenManager.activateBed(bed);
-        forceUpdate();
+        // The garden manager change will trigger the useEffect above
+        // so we don't need to manually update the plannedBeds state
     };
 
     return (

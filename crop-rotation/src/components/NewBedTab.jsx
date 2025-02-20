@@ -1,9 +1,10 @@
-// components/NewBedTab.jsx
-import React, { useState } from 'react';
-import { CropBed } from '../garden-classes';
+import { useState } from 'react';
+import { CropBed } from '../classes/garden-classes';
+import { useGardenManager } from '../hooks/useGardenManager';
 import './NewBedTab.css';
 
-const NewBedTab = ({ gardenManager }) => {
+const NewBedTab = () => {
+    const gardenManager = useGardenManager();
     const [bedName, setBedName] = useState('');
     const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
     const [selectedCrops, setSelectedCrops] = useState(new Set());
@@ -13,6 +14,7 @@ const NewBedTab = ({ gardenManager }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        gardenManager.load();
         if (bedName.trim()) {
             const plantingDate = new Date(selectedDate);
             const year = plantingDate.getFullYear();
