@@ -11,5 +11,4 @@ export function useGardenManager() {
 
     return gardenManager;
 }
-
-export { useGardenManager };
+//Test commit
