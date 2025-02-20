@@ -1,30 +1,27 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { GardenStorage } from '../classes/garden-manager';
 
 export function useGardenManager() {
     const [gardenManager, setGardenManager] = useState(() => GardenStorage.load());
     const [updateCounter, setUpdateCounter] = useState(0);
 
-    // Force a re-render when garden manager state changes
     const forceUpdate = useCallback(() => {
         setUpdateCounter(prev => prev + 1);
     }, []);
 
-    // Wrap the garden manager methods that modify state
-    const wrappedGardenManager = {
+    // Memoize the wrapped garden manager
+    const wrappedGardenManager = useMemo(() => ({
         ...gardenManager,
         // Getters
         getAllActiveBeds: () => gardenManager.activeBeds.getBeds(),
         getAllPlannedBeds: () => gardenManager.plannedBeds.getBeds(),
         getAllCrops: () => Array.from(gardenManager.crops),
         getHistoricalBeds: (year) => gardenManager.bedHistory.getBedsByYear(year),
-
         // Crop methods
         addCrop: (crop) => {
             gardenManager.addCrop(crop);
             forceUpdate();
         },
-
         // Planned beds methods
         plannedBeds: {
             ...gardenManager.plannedBeds,
@@ -38,7 +35,6 @@ export function useGardenManager() {
             },
             getBeds: () => gardenManager.plannedBeds.getBeds()
         },
-
         // Active beds methods
         activeBeds: {
             ...gardenManager.activeBeds,
@@ -52,7 +48,6 @@ export function useGardenManager() {
             },
             getBeds: () => gardenManager.activeBeds.getBeds()
         },
-
         // Bed history methods
         bedHistory: {
             ...gardenManager.bedHistory,
@@ -63,7 +58,6 @@ export function useGardenManager() {
             getBedsByYear: (year) => gardenManager.bedHistory.getBedsByYear(year),
             getAllBeds: () => gardenManager.bedHistory.getAllBeds()
         },
-
         // Bed state transition methods
         activateBed: (bed) => {
             gardenManager.activateBed(bed);
@@ -78,7 +72,7 @@ export function useGardenManager() {
             forceUpdate();
             return bed;
         }
-    };
+    }), [gardenManager, forceUpdate]);
 
     useEffect(() => {
         GardenStorage.save(gardenManager);

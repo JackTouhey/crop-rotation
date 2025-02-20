@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { Crop } from '../classes/garden-classes';
 import { useGardenManager } from '../hooks/useGardenManager';
 import './NewCropTab.css';
@@ -7,11 +7,6 @@ const NewCropTab = () => {
     const gardenManager = useGardenManager();
     const [cropName, setCropName] = useState('');
     const [message, setMessage] = useState('');
-    const [crops, setCrops] = useState([]);
-
-    useEffect(() => {
-        setCrops(gardenManager.getAllCrops());
-    }, [gardenManager]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,6 +18,9 @@ const NewCropTab = () => {
             setTimeout(() => setMessage(''), 3000);
         }
     };
+
+    // Get crops directly from gardenManager instead of maintaining separate state
+    const crops = gardenManager.getAllCrops();
 
     return (
         <div className="new-crop-container">
