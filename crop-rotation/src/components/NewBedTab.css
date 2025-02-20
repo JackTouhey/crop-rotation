@@ -30,14 +30,10 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
     border-bottom: 1px solid #add8e6;
     align-items: center;
 }
-
-    .form-group:last-of-type {
-        border-bottom: none;
-    }
 
     .form-group label {
         font-size: 1.1rem;
@@ -136,7 +132,6 @@
     font-size: 1.1rem;
     font-weight: 500;
     transition: all 0.3s;
-    margin-top: 20px;
 }
 
     .submit-button:hover {

@@ -9,6 +9,7 @@
 .new-crop-title {
     color: black;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .new-crop-form {
@@ -22,7 +23,7 @@
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
 }
 
     .form-group label {
@@ -48,6 +49,7 @@
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
+    align-self: center;
 }
 
     .submit-button:hover {
@@ -70,6 +72,7 @@
     .existing-crops h3 {
         color: black;
         margin-bottom: 15px;
+        text-align: center;
     }
 
 .crops-list {
