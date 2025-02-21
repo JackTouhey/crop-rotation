@@ -15,10 +15,11 @@ const CurrentBedsTab = () => {
     const handleMoveToHistory = (bed) => {
         if (weatherDescription.trim()) {
             bed.setWeatherDescription(weatherDescription.trim());
-            gardenManager.archiveBed(bed);
-            setSelectedBed(null);
-            setWeatherDescription('');
         }
+        gardenManager.archiveBed(bed);
+        setSelectedBed(null);
+        alert(`${bed.getName()} succesfully archived`);
+        setWeatherDescription('');
     };
 
     return (
