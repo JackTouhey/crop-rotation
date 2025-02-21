@@ -59,6 +59,9 @@ class CropBed {
     setDatePlanted(date) {
         this.datePlanted = date;
     }
+    getName() {
+        return this.name;
+    }
 }
 
 // Management classes for different bed states

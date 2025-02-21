@@ -14,6 +14,7 @@ const PlannedBedsTab = () => {
 
     const handleActivateBed = (bed) => {
         gardenManager.activateBed(bed);
+        alert(`Successfully activated ${bed.getName()}`);
     };
 
     return (
