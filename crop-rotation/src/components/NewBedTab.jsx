@@ -44,6 +44,7 @@ const NewBedTab = () => {
             setSelectedCrops(new Set());
             setWeatherDescription('');
             setTimeout(() => setMessage(''), 3000);
+            alert(`Bed "${bedName}" created successfully!`);
         }
     };
 
