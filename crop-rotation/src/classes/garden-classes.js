@@ -116,6 +116,11 @@ class BedHistory {
         this.priorBeds.push(bed);
     }
 
+    removeBed(bed) {
+        const index = this.priorBeds.indexOf(bed);
+        this.priorBeds.splice(index, 1);
+    }
+
     getBedsByYear(year) {
         return this.priorBeds.filter(bed => bed.year === year);
     }
@@ -161,6 +166,10 @@ class GardenManager {
     archiveBed(bed) {
         this.activeBeds.removeBed(bed);
         this.bedHistory.addBed(bed);
+    }
+
+    removeHistoricalBed(bed) {
+        this.bedHistory.removeBed(bed);
     }
 
     // Utility methods
