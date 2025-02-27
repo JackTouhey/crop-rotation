@@ -13,7 +13,6 @@ const HistoricalBedsTab = () => {
     }, [gardenManager]);
 
     const handleRemoveBed = (bed) => {
-        console.log(bed.name);
         gardenManager.removeHistoricalBed(bed);
         const beds = gardenManager.bedHistory.getAllBeds()
             .sort((a, b) => b.year - a.year || b.name.localeCompare(a.name));

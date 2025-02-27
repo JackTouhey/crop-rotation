@@ -167,7 +167,12 @@ class GardenManager {
         this.activeBeds.removeBed(bed);
         this.bedHistory.addBed(bed);
     }
-
+    removeActiveBed(bed) {
+        this.activeBeds.removeBed(bed);
+    }
+    removePlannedBed(bed) {
+        this.plannedBeds.removeBed(bed);
+    }
     removeHistoricalBed(bed) {
         this.bedHistory.removeBed(bed);
     }
