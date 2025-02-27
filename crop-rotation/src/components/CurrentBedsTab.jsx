@@ -24,7 +24,7 @@ const CurrentBedsTab = () => {
     };
 
     function renderBeds() {
-        const beds = gardenManager.bedHistory.getAllBeds()
+        const beds = gardenManager.getAllActiveBeds()
             .sort((a, b) => b.year - a.year || b.name.localeCompare(a.name));
         setActiveBeds(beds);
     }

@@ -19,7 +19,7 @@ const PlannedBedsTab = () => {
     };
 
     function renderBeds() {
-        const beds = gardenManager.bedHistory.getAllBeds()
+        const beds = gardenManager.getAllPlannedBeds()
             .sort((a, b) => b.year - a.year || b.name.localeCompare(a.name));
         setPlannedBeds(beds);
     }
