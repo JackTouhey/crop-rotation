@@ -54,28 +54,34 @@
 }
 
 .remove-bed {
-    background-color: #add8e6;
+    background-color: #FF6961;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     color: #333;
     cursor: pointer;
     font-family: Arial, sans-serif;
     font-size: 16px;
     font-weight: bold;
     height: 36px;
-    padding: 0 15px;
     transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.remove-bed:hover {
-    background-color: #9cc8d6;
-}
+    .remove-bed:hover {
+        background-color: #ff4137;
+    }
 
 .remove-bed:active {
     transform: scale(0.97);
 }
+
+.year-remove-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
 .bed-details {
     display: flex;
     flex-direction: column;

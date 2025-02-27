@@ -29,8 +29,10 @@ const HistoricalBedsTab = () => {
                     <div key={index} className="historical-bed-card">
                         <div className="bed-header">
                             <h3 className="bed-name">{bed.name}</h3>
-                            <span className="bed-year">{bed.year}</span>
-                            <button onClick={() => handleRemoveBed(bed)} className="remove-bed">X</button>
+                            <div className="year-remove-container">
+                                <span className="bed-year">{bed.year}</span>
+                                <button onClick={() => handleRemoveBed(bed)} className="remove-bed">X</button>
+                            </div>
                         </div>
                         <div className="bed-details">
                             <div className="bed-crops">
