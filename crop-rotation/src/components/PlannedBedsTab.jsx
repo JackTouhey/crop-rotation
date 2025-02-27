@@ -17,6 +17,14 @@ const PlannedBedsTab = () => {
         alert(`Successfully activated ${bed.getName()}`);
     };
 
+    const handleRemoveBed = (bed) => {
+        gardenManager.plannedBeds.removeBed(bed);
+        const beds = gardenManager.bedHistory.getAllBeds()
+            .sort((a, b) => b.year - a.year || b.name.localeCompare(a.name));
+        setPlannedBeds(beds);
+        alert(`Successfully removed ${bed.getName()}`);
+    };
+
     return (
         <div className="planned-beds-container">
             <h2 className="planned-beds-title">Planned Beds</h2>
@@ -25,7 +33,10 @@ const PlannedBedsTab = () => {
                     <div key={index} className="planned-bed-card">
                         <div className="bed-header">
                             <h3 className="bed-name">{bed.name}</h3>
-                            <span className="bed-year">{bed.year}</span>
+                            <div className="year-remove-container">
+                                <span className="bed-year">{bed.year}</span>
+                                <button onClick={() => handleRemoveBed(bed)} className="remove-bed">X</button>
+                            </div>
                         </div>
                         <div className="bed-content">
                             <div className="crops-section">

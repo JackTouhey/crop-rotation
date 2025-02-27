@@ -58,6 +58,10 @@ export function useGardenManager() {
             getBedsByYear: (year) => gardenManager.bedHistory.getBedsByYear(year),
             getAllBeds: () => gardenManager.bedHistory.getAllBeds()
         },
+            removeHistoricalBed: (bed) => {
+                gardenManager.removeHistoricalBed(bed);
+                forceUpdate();
+            },
         // Bed state transition methods
         activateBed: (bed) => {
             gardenManager.activateBed(bed);

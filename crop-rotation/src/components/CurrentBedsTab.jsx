@@ -22,13 +22,24 @@ const CurrentBedsTab = () => {
         setWeatherDescription('');
     };
 
+    const handleRemoveBed = (bed) => {
+        gardenManager.activeBeds.removeBed(bed);
+        const beds = gardenManager.bedHistory.getAllBeds()
+            .sort((a, b) => b.year - a.year || b.name.localeCompare(a.name));
+        setActiveBeds(beds);
+        alert(`Successfully removed ${bed.getName()}`);
+    };
+
     return (
         <div className="current-beds-container">
             <h2 className="current-beds-title">Current Beds</h2>
             <div className="beds-grid">
                 {activeBeds.map((bed, index) => (
                     <div key={index} className="bed-card">
-                        <h3 className="bed-name">{bed.name}</h3>
+                        <div className="name-delete-container">
+                            <h3 className="bed-name">{bed.name}</h3>
+                            <button onClick={() => handleRemoveBed(bed)} className="remove-bed">X</button>
+                        </div>
                         <div className="bed-info">
                             <p>Year: {bed.year}</p>
                             <p>Crops: {Array.from(bed.crops).map(crop => crop.name).join(', ')}</p>
