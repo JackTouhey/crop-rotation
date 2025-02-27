@@ -20,14 +20,19 @@ const CurrentBedsTab = () => {
         setSelectedBed(null);
         alert(`${bed.getName()} succesfully archived`);
         setWeatherDescription('');
+        renderBeds();
     };
 
-    const handleRemoveBed = (bed) => {
-        gardenManager.activeBeds.removeBed(bed);
+    function renderBeds() {
         const beds = gardenManager.bedHistory.getAllBeds()
             .sort((a, b) => b.year - a.year || b.name.localeCompare(a.name));
         setActiveBeds(beds);
+    }
+
+    const handleRemoveBed = (bed) => {
+        gardenManager.activeBeds.removeBed(bed);
         alert(`Successfully removed ${bed.getName()}`);
+        renderBeds();
     };
 
     return (

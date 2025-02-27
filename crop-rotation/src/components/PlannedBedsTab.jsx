@@ -15,13 +15,18 @@ const PlannedBedsTab = () => {
     const handleActivateBed = (bed) => {
         gardenManager.activateBed(bed);
         alert(`Successfully activated ${bed.getName()}`);
+        renderBeds();
     };
 
-    const handleRemoveBed = (bed) => {
-        gardenManager.plannedBeds.removeBed(bed);
+    function renderBeds() {
         const beds = gardenManager.bedHistory.getAllBeds()
             .sort((a, b) => b.year - a.year || b.name.localeCompare(a.name));
         setPlannedBeds(beds);
+    }
+
+    const handleRemoveBed = (bed) => {
+        gardenManager.plannedBeds.removeBed(bed);
+        renderBeds();
         alert(`Successfully removed ${bed.getName()}`);
     };
 
