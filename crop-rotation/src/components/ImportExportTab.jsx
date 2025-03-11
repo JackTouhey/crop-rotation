@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useGardenManager } from '../hooks/useGardenManager';
+import { GardenStorage } from '../classes/garden-manager';
 import './ImportExportTab.css';
 
 const ImportExportTab = () => {
@@ -9,7 +10,7 @@ const ImportExportTab = () => {
 
     const handleExport = () => {
         try {
-            const exportData = gardenManager.exportToJson();
+            const exportData = GardenStorage.serialize(gardenManager);
             setJsonData(exportData);
             setStatusMessage({ text: 'Garden data exported successfully!', isError: false });
         } catch (error) {
