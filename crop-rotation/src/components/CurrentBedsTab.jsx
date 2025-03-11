@@ -57,6 +57,11 @@ const CurrentBedsTab = () => {
                         </button>
                     </div>
                 ))}
+                {activeBeds.length === 0 && (
+                    <div className="no-beds-message">
+                        No active beds available
+                    </div>
+                )}
             </div>
             {selectedBed && (
                 <div className="modal-overlay">
