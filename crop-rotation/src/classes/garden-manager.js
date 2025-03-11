@@ -115,6 +115,17 @@ class GardenStorage {
             return new GardenManager();
         }
     }
+
+    static loadImport(jsonString) {
+        try {
+            const serializedData = jsonString;
+            if (!serializedData) return new GardenManager();
+            return this.deserialize(serializedData);
+        } catch (error) {
+            console.error('Error loading garden data:', error);
+            return new GardenManager();
+        }
+    }
 }
 
 export { GardenStorage };
