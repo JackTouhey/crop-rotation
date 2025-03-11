@@ -16,6 +16,9 @@ export function useGardenManager() {
         getAllPlannedBeds: () => gardenManager.plannedBeds.getBeds(),
         getAllCrops: () => Array.from(gardenManager.crops),
         getHistoricalBeds: (year) => gardenManager.bedHistory.getBedsByYear(year),
+        loadImport: (jsonData) => {
+            setGardenManager(GardenStorage.loadImport(jsonData));
+        },
         // Crop methods
         addCrop: (crop) => {
             gardenManager.addCrop(crop);

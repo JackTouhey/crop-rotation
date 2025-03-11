@@ -25,7 +25,7 @@ const ImportExportTab = () => {
                 return;
             }
 
-            gardenManager.importFromJson(jsonData);
+            gardenManager.loadImport(jsonData);
             setStatusMessage({ text: 'Garden data imported successfully!', isError: false });
         } catch (error) {
             setStatusMessage({ text: `Import failed: ${error.message}`, isError: true });
