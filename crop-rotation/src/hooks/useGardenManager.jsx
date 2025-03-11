@@ -9,7 +9,6 @@ export function useGardenManager() {
         setUpdateCounter(prev => prev + 1);
     }, []);
 
-    // Memoize the wrapped garden manager
     const wrappedGardenManager = useMemo(() => ({
         ...gardenManager,
         // Getters

@@ -5,6 +5,7 @@ import CurrentBedsTab from './components/CurrentBedsTab';
 import NewBedTab from './components/NewBedTab';
 import HistoricalBedsTab from './components/HistoricalBedsTab';
 import PlannedBedsTab from './components/PlannedBedsTab';
+import ImportExportTab from './components/ImportExportTab';
 import './App.css';
 
 const App = () => {
@@ -16,7 +17,8 @@ const App = () => {
         { id: 'newBed', label: 'New Bed' },
         { id: 'current', label: 'Current Beds' },
         { id: 'historical', label: 'Historical Beds' },
-        { id: 'planned', label: 'Planned Beds' }
+        { id: 'planned', label: 'Planned Beds' },
+        { id: 'export', label: 'Import/Export' }
     ];
 
     const renderTabContent = () => {
@@ -31,6 +33,8 @@ const App = () => {
                 return <HistoricalBedsTab gardenManager={gardenManager} />;
             case 'planned':
                 return <PlannedBedsTab gardenManager={gardenManager} />;
+            case 'export':
+                return <ImportExportTab gardenManager={gardenManager} />;
             default:
                 return null;
         }
